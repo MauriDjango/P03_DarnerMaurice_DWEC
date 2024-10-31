@@ -4,7 +4,7 @@ const clientTable = document.querySelector('#listado-clientes')
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadClients().then(r => console.log(r));
+    loadClients()
 })
 
 // Manipulate HTML -----------------------------------------------------------------------------------------------------
@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
 async function loadClients() {
     try {
         const clients = await clientStore.getAll();
+        clientTable.innerHTML = ''
         clients.forEach(client => {
-            clientTable.innerHTML = ''
             clientTable.appendChild(createClientRow(client))
         })
 
@@ -53,7 +53,7 @@ function createClientRow(client) {
     deleteButton.className = "text-red-600 hover:text-red-900 m-1";
     deleteButton.onclick = async () => {
         await clientStore.delete(client.email)
-        loadClients()
+        await loadClients()
     };
 
     actionsCell.appendChild(editLink);

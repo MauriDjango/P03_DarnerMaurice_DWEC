@@ -33,6 +33,7 @@ function loadEventListeners() {
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
         await clientStore.update(client);
+        alert("Client successfully updated");
     });
 
     nameInput.addEventListener("input", (e) => {

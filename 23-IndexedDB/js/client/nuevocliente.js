@@ -33,6 +33,7 @@ function loadEventListeners() {
         e.preventDefault()
         try {
             await clientStore.add(newClient)
+            alert('Client successfully added');
         } catch (error) {
             alert('Email is already registered')
         }
